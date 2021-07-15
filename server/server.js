@@ -1,20 +1,34 @@
+//libraries
 const express = require("express");
 const app = express();
 const socket = require("socket.io");
 const cors = require("cors");
 
-const corsOptions = {
-  credentials: true,
-  origin: "http://localhost:3000/",
-  methods: ["GET", "POST"],
-};
+//Middleware
+app.use(cors());
 
-app.use(cors(corsOptions));
+//App setup
+const server = app.listen(3001, () =>
+  console.log("listening to requests on port 3001")
+);
 
-const port = 3001;
-const server = app.listen(port, () => console.log("server is running"));
+//Socket setup
+const io = socket(server, { cors: { origin: "*" } });
 
-let io = socket(server);
 io.on("connection", (socket) => {
-  console.log(socket.id);
+  console.log("socket id: " + socket.id);
+
+  socket.on("join_room", (data) => {
+    socket.join(data.room);
+    console.log(`${data.user} joined the room: ${data.room}`);
+  });
+
+  socket.on("send_text", (data) => {
+    socket.to(data.room).emit("recieve_text", data.content);
+    console.log(data);
+  });
+
+  socket.on("disconnect", () => {
+    console.log(`USER disconnected`);
+  });
 });

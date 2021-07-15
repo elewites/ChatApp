@@ -1,0 +1,45 @@
+.chatContainer {
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  width: 200px;
+
+  border: 5px solid #007cc7;
+  border-radius: 7px;
+  background-color: #202020;
+}
+
+.messages {
+  box-sizing: border-box;
+  height: 320px;
+  margin: 6px;
+  border: 1px solid #202020;
+  border-radius: 3px;
+  background-color: aliceblue;
+}
+
+.messageDiv {
+  box-sizing: border-box;
+  display: flex;
+  height: 80px;
+  margin: 0px 6px 6px;
+}
+
+.messageDiv input {
+  box-sizing: border-box;
+  width: 150px;
+  border: 1px solid #202020;
+  border-radius: 3px;
+  padding-left: 5px;
+  background-color: aliceblue;
+  overflow-y: scroll;
+}
+
+.messageDiv button {
+  box-sizing: border-box;
+  width: 50px;
+  margin-left: 3px;
+  border: 1px solid #202020;
+  border-radius: 3px;
+  background-color: aliceblue;
+}
