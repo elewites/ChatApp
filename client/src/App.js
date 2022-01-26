@@ -23,10 +23,13 @@ function App() {
 
   const endpoint = "localhost:3001/";
 
+  //connecting to endpoint
+  //useEffect is used in case endpoint changes
   useEffect(() => {
     socket = io.connect(endpoint);
   }, [endpoint]);
 
+  //listening for messages recieved from backend 
   useEffect(() => {
     socket.on("recieve_text", (data) => {
       setTextList([...textList, data]);

@@ -2,7 +2,7 @@
 import React from "react";
 
 //Styling
-import "../css/login.css"
+import "../css/login.css";
 
 function Login(props) {
   const setUser = props.setUser;
